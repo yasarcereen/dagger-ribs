@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">dagger-ribs</string>
+    <string name="login_dialog_title">Login</string>
+</resources>
