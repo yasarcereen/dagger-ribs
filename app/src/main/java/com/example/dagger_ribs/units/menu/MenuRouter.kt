@@ -3,9 +3,9 @@ package com.example.dagger_ribs.units.dashboard
 import com.example.dagger_ribs.utils.compose.rib.ComposeRouter
 import com.uber.rib.core.InteractorBaseComponent
 
-class DashboardRouter(
-    view: DashboardView,
-    interactor: DashboardInteractor,
+class MenuRouter(
+    view: MenuView,
+    interactor: MenuInteractor,
     component: InteractorBaseComponent<*>
-) : ComposeRouter<DashboardView, DashboardInteractor>(view,interactor,component) {
+) : ComposeRouter<MenuView, MenuInteractor>(view,interactor,component) {
 }

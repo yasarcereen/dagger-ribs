@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dagger_ribs.utils.compose.rib.Compose
 import kotlinx.coroutines.launch
 
-class DashboardView : Compose{
+class MenuView : Compose{
     @Composable
     override fun Content(modifier: Modifier) {
         Column(modifier = Modifier
@@ -41,5 +41,4 @@ class DashboardView : Compose{
         }
     }
 
-    interface Presenter
 }
