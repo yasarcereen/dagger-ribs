@@ -11,6 +11,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -34,6 +36,9 @@ class LoginView : Compose {
     override fun Content(modifier: Modifier) {
         val coroutineScope = rememberCoroutineScope()
 
+        val email by emailText.collectAsState()
+        val password by passwordText.collectAsState()
+
         Column(modifier = Modifier
             .padding(start = 24.dp, end = 24.dp, top = 10.dp, bottom = 10.dp)
             .fillMaxWidth()) {
@@ -45,7 +50,7 @@ class LoginView : Compose {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            OutlinedTextField(value = "email",
+            OutlinedTextField(value = email,
                 onValueChange = {
                     coroutineScope.launch {
                         emailText.emit(it)
@@ -55,7 +60,7 @@ class LoginView : Compose {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            OutlinedTextField(value = "password",
+            OutlinedTextField(value = password,
                 onValueChange = {
                     coroutineScope.launch {
                         passwordText.emit(it)
