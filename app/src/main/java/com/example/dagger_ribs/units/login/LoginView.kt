@@ -9,27 +9,26 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.example.dagger_ribs.R
+import com.example.dagger_ribs.units.user.UserData
 import com.example.dagger_ribs.utils.compose.rib.Compose
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class LoginView : Compose {
+class LoginView : Compose, LoginInteractor.Presenter {
     private val emailText = MutableStateFlow("")
     private val passwordText = MutableStateFlow("")
 
-    private val buttonClick = MutableSharedFlow<Unit>()
+    private val continueButtonClick = MutableSharedFlow<Unit>()
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -43,13 +42,10 @@ class LoginView : Compose {
             .padding(start = 24.dp, end = 24.dp, top = 10.dp, bottom = 10.dp)
             .fillMaxWidth()) {
             Spacer(modifier = Modifier.height(10.dp))
-
             Text(
                 text = stringResource(id = R.string.login_dialog_title)
             )
-
             Spacer(modifier = Modifier.height(10.dp))
-
             OutlinedTextField(value = email,
                 onValueChange = {
                     coroutineScope.launch {
@@ -57,9 +53,7 @@ class LoginView : Compose {
                     }
                 }
             )
-
             Spacer(modifier = Modifier.height(10.dp))
-
             OutlinedTextField(value = password,
                 onValueChange = {
                     coroutineScope.launch {
@@ -67,9 +61,7 @@ class LoginView : Compose {
                     }
                 }
             )
-
             Spacer(modifier = Modifier.height(10.dp))
-
             ContinueButton()
         }
     }
@@ -81,14 +73,18 @@ class LoginView : Compose {
         Button(
             onClick = {
                 coroutineScope.launch {
-                    buttonClick.emit(Unit)
+                    continueButtonClick.emit(Unit)
                 }
             }) {
             Text(text = "Continue")
         }
     }
 
-    interface Presenter {
+    override fun continueButtonClick() : Flow<Unit> {
+        return continueButtonClick
+    }
 
+    override fun checkCredentials(): Boolean {
+        return emailText.value == UserData.email && passwordText.value == UserData.password
     }
 }

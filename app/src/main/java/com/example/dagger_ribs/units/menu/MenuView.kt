@@ -1,4 +1,4 @@
-package com.example.dagger_ribs.units.dashboard
+package com.example.dagger_ribs.units.menu
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,9 +12,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.dagger_ribs.utils.compose.rib.Compose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 
-class MenuView : Compose{
+class MenuView : Compose, MenuInteractor.Presenter{
+    private val logoutButtonClick = MutableSharedFlow<Unit>()
+
     @Composable
     override fun Content(modifier: Modifier) {
         Column(modifier = Modifier
@@ -34,11 +38,15 @@ class MenuView : Compose{
 
         Button(onClick = {
             coroutineScope.launch {
-
+                logoutButtonClick.emit(Unit)
             }
         }) {
             Text("Log out")
         }
+    }
+
+    override fun logoutButtonClick() : Flow<Unit> {
+        return logoutButtonClick
     }
 
 }

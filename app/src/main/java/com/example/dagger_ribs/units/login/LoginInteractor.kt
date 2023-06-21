@@ -1,10 +1,11 @@
 package com.example.dagger_ribs.units.login
 
 import com.uber.rib.core.Interactor
+import kotlinx.coroutines.flow.Flow
 
-class LoginInteractor : Interactor<LoginView.Presenter, LoginRouter>() {
-
-    fun Auth(){
-
+class LoginInteractor : Interactor<LoginInteractor.Presenter, LoginRouter>() {
+    interface Presenter {
+        fun continueButtonClick() : Flow<Unit>
+        fun checkCredentials() : Boolean
     }
 }
