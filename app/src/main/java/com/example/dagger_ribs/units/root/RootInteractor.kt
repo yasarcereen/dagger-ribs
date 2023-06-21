@@ -1,4 +1,4 @@
-package com.example.dagger_ribs
+package com.example.dagger_ribs.units.root
 
 import com.uber.rib.core.Interactor
 

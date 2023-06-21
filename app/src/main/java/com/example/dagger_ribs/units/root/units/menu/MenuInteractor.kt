@@ -1,4 +1,4 @@
-package com.example.dagger_ribs.units.menu
+package com.example.dagger_ribs.units.root.units.menu
 
 import com.uber.rib.core.Interactor
 import kotlinx.coroutines.flow.Flow

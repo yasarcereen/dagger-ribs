@@ -1,4 +1,4 @@
-package com.example.dagger_ribs.units.login
+package com.example.dagger_ribs.units.root.units.login
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.dagger_ribs.R
-import com.example.dagger_ribs.units.user.UserData
+import com.example.dagger_ribs.units.root.units.user.UserData
 import com.example.dagger_ribs.utils.compose.rib.Compose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

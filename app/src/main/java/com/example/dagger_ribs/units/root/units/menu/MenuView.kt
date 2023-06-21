@@ -1,4 +1,4 @@
-package com.example.dagger_ribs.units.menu
+package com.example.dagger_ribs.units.root.units.menu
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 
-class MenuView : Compose, MenuInteractor.Presenter{
+class MenuView : Compose, MenuInteractor.Presenter {
     private val logoutButtonClick = MutableSharedFlow<Unit>()
 
     @Composable

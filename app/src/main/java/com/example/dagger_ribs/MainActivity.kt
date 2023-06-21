@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.Modifier
 import com.example.dagger_ribs.ui.theme.DaggerribsTheme
-import com.example.dagger_ribs.units.menu.MenuView
-import com.example.dagger_ribs.units.login.LoginView
+import com.example.dagger_ribs.units.root.units.menu.MenuView
+import com.example.dagger_ribs.units.root.units.login.LoginView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

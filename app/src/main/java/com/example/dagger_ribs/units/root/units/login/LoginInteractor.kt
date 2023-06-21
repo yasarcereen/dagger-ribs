@@ -1,4 +1,4 @@
-package com.example.dagger_ribs.units.login
+package com.example.dagger_ribs.units.root.units.login
 
 import com.uber.rib.core.Interactor
 import kotlinx.coroutines.flow.Flow
