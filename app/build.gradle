@@ -19,6 +19,15 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "dagger.gradle.incremental"   : "true",
+                        "dagger.gradle.ignoreUnsupportedOptions" : "true"
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -73,4 +82,5 @@ dependencies {
     implementation 'com.uber.rib:rib-android:0.14.2'
     testImplementation 'com.uber.rib:rib-test:0.14.2'
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 }
