@@ -80,6 +80,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.45"
     kapt "com.google.dagger:dagger-compiler:2.45"
     kapt "com.google.dagger:dagger-android-processor:2.45"
+    kapt 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0'
 
     annotationProcessor 'com.uber.rib:rib-compiler-test:0.14.2'
     implementation 'com.uber.rib:rib-android:0.14.2'

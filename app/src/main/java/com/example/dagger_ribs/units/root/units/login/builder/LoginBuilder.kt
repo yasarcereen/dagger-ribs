@@ -3,6 +3,7 @@ package com.example.dagger_ribs.units.root.units.login.builder
 import com.example.dagger_ribs.units.root.units.login.LoginInteractor
 import com.example.dagger_ribs.units.root.units.login.LoginRouter
 import com.example.dagger_ribs.units.root.units.login.LoginView
+import com.example.dagger_ribs.units.root.units.login.di.DaggerLoginComponent
 import com.example.dagger_ribs.units.root.units.login.di.LoginComponent
 import javax.inject.Inject
 
