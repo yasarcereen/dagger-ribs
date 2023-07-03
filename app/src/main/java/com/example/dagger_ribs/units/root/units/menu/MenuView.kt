@@ -48,5 +48,4 @@ class MenuView : Compose, MenuInteractor.Presenter {
     override fun logoutButtonClick() : Flow<Unit> {
         return logoutButtonClick
     }
-
 }

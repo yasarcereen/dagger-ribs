@@ -12,6 +12,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [RootModule::class])
 interface RootComponent {
+
     fun router(): RootRouter
 
     @Component.Builder

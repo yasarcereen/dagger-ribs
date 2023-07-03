@@ -14,9 +14,8 @@ class MenuModule {
     @Provides
     @Singleton
     fun router(view: MenuView,
-               interactor: MenuInteractor,
-               component: InteractorBaseComponent<*>
+               interactor: MenuInteractor
     ) : MenuRouter {
-        return MenuRouter(view, interactor, component)
+        return MenuRouter(view, interactor)
     }
 }

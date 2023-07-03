@@ -12,11 +12,9 @@ import javax.inject.Singleton
 class LoginModule {
 
     @Provides
-    @Singleton
     fun router(view: LoginView,
-               interactor: LoginInteractor,
-               component: InteractorBaseComponent<*>
+               interactor: LoginInteractor
     ): LoginRouter {
-        return LoginRouter(view, interactor,component)
+        return LoginRouter(view, interactor)
     }
 }

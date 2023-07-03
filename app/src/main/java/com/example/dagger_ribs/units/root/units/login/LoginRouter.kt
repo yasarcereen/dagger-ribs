@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 class LoginRouter @Inject constructor(
     view: LoginView,
-    interactor: LoginInteractor,
-    component: InteractorBaseComponent<*>
-) : ComposeRouter<LoginView, LoginInteractor>(view, interactor, component){
+    interactor: LoginInteractor
+) : ComposeRouter<LoginView, LoginInteractor>(view, interactor){
 }

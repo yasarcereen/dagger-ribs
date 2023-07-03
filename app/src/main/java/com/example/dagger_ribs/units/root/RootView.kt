@@ -7,6 +7,6 @@ import com.example.dagger_ribs.utils.compose.rib.Compose
 class RootView : Compose, RootInteractor.Presenter {
     @Composable
     override fun Content(modifier: Modifier) {
-        TODO("Not yet implemented")
+
     }
 }
