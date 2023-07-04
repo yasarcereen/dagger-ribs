@@ -30,18 +30,27 @@ class RootRouter(
     }
 
     fun detachLogin() {
-        if (loginRouter != null) {
-            loginRouter = null
+        loginRouter?.let {
+            detachChild(it)
+            view.removeContainerView()
         }
     }
 
     fun attachMenu() {
         if (menuRouter == null) {
-            menuRouter = menuBuilder.build()
+            menuRouter = menuBuilder.build().also {
+                attachChild(it)
+                view.removeContainerView()
+                view.setUpdateView(it.view)
+            }
         }
     }
 
     fun detachMenu() {
+        menuRouter?.let {
+            detachChild(it)
+            view.removeContainerView()
+        }
         if (menuRouter != null) {
             menuRouter = null
         }

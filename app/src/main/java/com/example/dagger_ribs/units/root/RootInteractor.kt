@@ -10,24 +10,19 @@ class RootInteractor : Interactor<RootInteractor.Presenter, RootRouter>() {
     override fun didBecomeActive(savedInstanceState: Bundle?) {
         super.didBecomeActive(savedInstanceState)
 
-        router.attachLogin()
-
-
-
-
+        coroutineScope.launch {
+            router.attachLogin()
+            router.loginRouter?.view?.loginSuccess?.collect {
+                if (it) {
+                    router.detachLogin()
+                    router.attachMenu()
+                } else {
+                    Log.d("MENU", "NOT ATTACHED")
+                }
+            }
+        }
     }
     interface Presenter
-
-    /*private suspend fun userLoggedIn() {
-        val loggedIn = router.loginRouter?.interactor?.injectedPresenter?.loggedIn() ?: false
-
-        Log.d("LOGGED IN", loggedIn.toString())
-
-        if (loggedIn) {
-            router.detachLogin()
-            router.attachMenu()
-        }
-    }*/
 
     fun userLoggedOut() {
         val loggedOut = router.menuRouter?.interactor?.injectedPresenter?.userLoggedOut() ?: false

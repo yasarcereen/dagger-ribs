@@ -1,6 +1,5 @@
 package com.example.dagger_ribs.units.root
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
@@ -11,9 +10,7 @@ class RootView : Compose, RootInteractor.Presenter {
     private val mutableUpdateView = mutableStateOf<Compose?>(null)
     @Composable
     override fun Content(modifier: Modifier) {
-
         mutableUpdateView.value?.Content(Modifier)
-
     }
 
     fun removeContainerView() {
