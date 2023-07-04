@@ -1,5 +1,6 @@
 package com.example.dagger_ribs.units.root.units.login
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -92,13 +93,13 @@ class LoginView : Compose, LoginInteractor.Presenter {
         return emailText.value == UserData.email && passwordText.value == UserData.password
     }
 
-    override fun loggedIn(): Boolean {
+    override suspend fun loggedIn() {
         var loggedIn = false
-        runBlocking {
-            continueButtonClick.onEach {
+        coroutineScope {
+            continueButtonClick.collect {
+                Log.d("BUTTON", "clicked")
                 loggedIn = checkCredentials()
             }
         }
-        return loggedIn
     }
 }
