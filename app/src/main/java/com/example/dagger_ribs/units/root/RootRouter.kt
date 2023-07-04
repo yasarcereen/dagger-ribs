@@ -20,7 +20,12 @@ class RootRouter(
 
     fun attachLogin() {
         if (loginRouter == null) {
-            loginRouter = loginBuilder.build()
+            loginRouter = loginBuilder.build().also {
+                attachChild(it)
+                view.removeContainerView()
+                view.setUpdateView(it.view)
+            }
+
         }
     }
 
