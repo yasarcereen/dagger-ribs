@@ -7,5 +7,7 @@ class LoginInteractor : Interactor<LoginInteractor.Presenter, LoginRouter>() {
     interface Presenter {
         fun continueButtonClick() : Flow<Unit>
         fun checkCredentials() : Boolean
+
+        fun loggedIn() : Boolean
     }
 }

@@ -22,7 +22,11 @@ import com.example.dagger_ribs.utils.compose.rib.Compose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 
 class LoginView : Compose, LoginInteractor.Presenter {
     private val emailText = MutableStateFlow("")
@@ -86,5 +90,15 @@ class LoginView : Compose, LoginInteractor.Presenter {
 
     override fun checkCredentials(): Boolean {
         return emailText.value == UserData.email && passwordText.value == UserData.password
+    }
+
+    override fun loggedIn(): Boolean {
+        var loggedIn = false
+        runBlocking {
+            continueButtonClick.onEach {
+                loggedIn = checkCredentials()
+            }
+        }
+        return loggedIn
     }
 }

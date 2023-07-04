@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 class MenuInteractor : Interactor<MenuInteractor.Presenter, MenuRouter>() {
     interface Presenter {
         fun logoutButtonClick() : Flow<Unit>
+
+        fun userLoggedOut() : Boolean
     }
 }

@@ -6,13 +6,14 @@ import com.example.dagger_ribs.units.root.units.menu.MenuRouter
 import com.example.dagger_ribs.units.root.units.menu.builder.MenuBuilder
 import com.example.dagger_ribs.utils.compose.rib.ComposeRouter
 import com.uber.rib.core.InteractorBaseComponent
-import javax.inject.Inject
 
-class RootRouter @Inject constructor(view: RootView,
-                                     interactor: RootInteractor,
-                                     private val loginBuilder: LoginBuilder,
-                                     private val menuBuilder: MenuBuilder
-) : ComposeRouter<RootView, RootInteractor>(view, interactor) {
+class RootRouter(
+    component: InteractorBaseComponent<*>,
+    view: RootView,
+    interactor: RootInteractor,
+    private val loginBuilder: LoginBuilder,
+    private val menuBuilder: MenuBuilder
+) : ComposeRouter<RootView, RootInteractor>(view, interactor, component) {
 
     var loginRouter: LoginRouter? = null
     var menuRouter: MenuRouter? = null

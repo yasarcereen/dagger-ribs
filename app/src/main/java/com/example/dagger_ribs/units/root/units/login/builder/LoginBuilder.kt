@@ -5,9 +5,10 @@ import com.example.dagger_ribs.units.root.units.login.LoginRouter
 import com.example.dagger_ribs.units.root.units.login.LoginView
 import com.example.dagger_ribs.units.root.units.login.di.DaggerLoginComponent
 import com.example.dagger_ribs.units.root.units.login.di.LoginComponent
-import javax.inject.Inject
+import com.uber.rib.core.Builder
 
-class LoginBuilder @Inject constructor(){
+class LoginBuilder(dependency: LoginDependencies)
+    : Builder<LoginRouter, LoginDependencies>(dependency){
     fun build(): LoginRouter {
         val presenter = LoginView()
         val interactor = LoginInteractor()

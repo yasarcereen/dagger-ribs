@@ -14,7 +14,9 @@ import androidx.compose.ui.unit.dp
 import com.example.dagger_ribs.utils.compose.rib.Compose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MenuView : Compose, MenuInteractor.Presenter {
     private val logoutButtonClick = MutableSharedFlow<Unit>()
@@ -47,5 +49,15 @@ class MenuView : Compose, MenuInteractor.Presenter {
 
     override fun logoutButtonClick() : Flow<Unit> {
         return logoutButtonClick
+    }
+
+    override fun userLoggedOut(): Boolean {
+        var loggedOut = false
+        runBlocking {
+            logoutButtonClick.onEach {
+                loggedOut = true
+            }
+        }
+        return loggedOut
     }
 }

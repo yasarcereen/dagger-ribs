@@ -3,19 +3,25 @@ package com.example.dagger_ribs.units.root.units.menu.di
 import com.example.dagger_ribs.units.root.units.menu.MenuInteractor
 import com.example.dagger_ribs.units.root.units.menu.MenuRouter
 import com.example.dagger_ribs.units.root.units.menu.MenuView
-import com.uber.rib.core.InteractorBaseComponent
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class MenuModule {
+abstract class MenuModule {
 
-    @Provides
-    @Singleton
-    fun router(view: MenuView,
-               interactor: MenuInteractor
-    ) : MenuRouter {
-        return MenuRouter(view, interactor)
+    companion object {
+        @Provides
+        fun router(
+            component: MenuComponent,
+            view: MenuView,
+            interactor: MenuInteractor
+        ): MenuRouter {
+            return MenuRouter(component, view, interactor)
+        }
     }
+
+    @Binds
+    abstract fun presenter(view: MenuView): MenuInteractor.Presenter
 }

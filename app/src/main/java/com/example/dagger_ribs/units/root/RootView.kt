@@ -1,5 +1,6 @@
 package com.example.dagger_ribs.units.root
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.dagger_ribs.utils.compose.rib.Compose
@@ -7,6 +8,7 @@ import com.example.dagger_ribs.utils.compose.rib.Compose
 class RootView : Compose, RootInteractor.Presenter {
     @Composable
     override fun Content(modifier: Modifier) {
+        Text(text = "ceren")
 
     }
 }
