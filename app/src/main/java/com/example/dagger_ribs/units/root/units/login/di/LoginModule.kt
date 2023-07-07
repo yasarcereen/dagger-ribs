@@ -9,7 +9,7 @@ import dagger.Provides
 
 @Module
 abstract class LoginModule {
-
+    @LoginScope
     companion object {
         @Provides
         fun router(
@@ -21,6 +21,7 @@ abstract class LoginModule {
         }
     }
 
+    @LoginScope
     @Binds
     abstract fun presenter(view: LoginView): LoginInteractor.Presenter
 }

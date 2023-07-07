@@ -35,8 +35,6 @@ class LoginView : Compose, LoginInteractor.Presenter {
 
     private val continueButtonClick = MutableSharedFlow<Unit>()
 
-    var loginSuccess = MutableSharedFlow<Boolean>()
-
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(modifier: Modifier) {
@@ -81,6 +79,7 @@ class LoginView : Compose, LoginInteractor.Presenter {
             onClick = {
                 coroutineScope.launch {
                     continueButtonClick.emit(Unit)
+                    Log.d("LoginView", "continue button clicked")
                 }
             }) {
             Text(text = "Continue")
@@ -93,18 +92,5 @@ class LoginView : Compose, LoginInteractor.Presenter {
 
     override fun checkCredentials(): Boolean {
         return emailText.value == UserData.email && passwordText.value == UserData.password
-    }
-
-    override suspend fun loggedIn() {
-        coroutineScope {
-            continueButtonClick.collect {
-                Log.d("BUTTON", "clicked")
-                if (checkCredentials()) {
-                    loginSuccess.emit(true)
-                } else {
-                    Log.d("LOGIN ATTEMPT", "incorrect credentials")
-                }
-            }
-        }
     }
 }

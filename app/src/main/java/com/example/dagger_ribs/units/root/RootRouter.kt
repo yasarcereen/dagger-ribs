@@ -1,5 +1,6 @@
 package com.example.dagger_ribs.units.root
 
+import android.util.Log
 import com.example.dagger_ribs.units.root.units.login.LoginRouter
 import com.example.dagger_ribs.units.root.units.login.builder.LoginBuilder
 import com.example.dagger_ribs.units.root.units.menu.MenuRouter
@@ -25,7 +26,6 @@ class RootRouter(
                 view.removeContainerView()
                 view.setUpdateView(it.view)
             }
-
         }
     }
 
@@ -34,25 +34,28 @@ class RootRouter(
             detachChild(it)
             view.removeContainerView()
         }
+        loginRouter = null
     }
 
     fun attachMenu() {
+        Log.d("ATTACH MENU", "CALLED")
         if (menuRouter == null) {
             menuRouter = menuBuilder.build().also {
                 attachChild(it)
                 view.removeContainerView()
                 view.setUpdateView(it.view)
             }
+            Log.d("ATTACH MENU","ATTACHED")
         }
     }
 
     fun detachMenu() {
+        Log.d("DETACH MENU","CALLED")
         menuRouter?.let {
+            Log.d("DETACH MENU","DETACHED")
             detachChild(it)
             view.removeContainerView()
         }
-        if (menuRouter != null) {
-            menuRouter = null
-        }
+        menuRouter = null
     }
 }

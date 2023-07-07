@@ -12,6 +12,7 @@ import javax.inject.Singleton
 abstract class MenuModule {
 
     companion object {
+        @MenuScope
         @Provides
         fun router(
             component: MenuComponent,
@@ -22,6 +23,7 @@ abstract class MenuModule {
         }
     }
 
+    @MenuScope
     @Binds
     abstract fun presenter(view: MenuView): MenuInteractor.Presenter
 }

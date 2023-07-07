@@ -9,7 +9,8 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = [MenuModule::class])
+@MenuScope
+@Component(modules = [MenuModule::class], dependencies = [MenuDependencies::class])
 interface MenuComponent: InteractorBaseComponent<MenuInteractor> {
     fun router() : MenuRouter
 
@@ -21,7 +22,7 @@ interface MenuComponent: InteractorBaseComponent<MenuInteractor> {
         @BindsInstance
         fun view(view: MenuView): Builder
 
-        @BindsInstance
+        //@BindsInstance
         fun dependencies(dependencies: MenuDependencies): Builder
 
         fun build(): MenuComponent

@@ -1,5 +1,8 @@
 package com.example.dagger_ribs.units.root.units.login.builder
 
-interface LoginDependencies {
+import com.example.dagger_ribs.units.root.units.events.LoginEvent
+import kotlinx.coroutines.flow.FlowCollector
 
+interface LoginDependencies {
+    fun loginEvent() : FlowCollector<@JvmSuppressWildcards LoginEvent>
 }

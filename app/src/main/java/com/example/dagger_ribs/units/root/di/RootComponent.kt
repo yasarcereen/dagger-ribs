@@ -13,6 +13,7 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
+@RootScope
 @Component(modules = [RootModule::class])
 interface RootComponent: InteractorBaseComponent<RootInteractor>, LoginDependencies,MenuDependencies {
 

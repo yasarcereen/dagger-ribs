@@ -8,7 +8,8 @@ import com.uber.rib.core.InteractorBaseComponent
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [LoginModule::class])
+@LoginScope
+@Component(modules = [LoginModule::class], dependencies = [LoginDependencies::class])
 interface LoginComponent: InteractorBaseComponent<LoginInteractor> {
     fun router() : LoginRouter
 
@@ -20,7 +21,7 @@ interface LoginComponent: InteractorBaseComponent<LoginInteractor> {
         @BindsInstance
         fun view(view: LoginView): Builder
 
-        @BindsInstance
+        //@BindsInstance
         fun dependencies(dependencies: LoginDependencies): LoginComponent.Builder
 
         fun build(): LoginComponent
